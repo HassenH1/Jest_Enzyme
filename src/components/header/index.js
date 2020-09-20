@@ -4,10 +4,11 @@ import Logo from "../../assets/graphics/logo.png";
 
 function Header() {
   return (
-    <header className="headerComponent">
+    //never use className for testing
+    <header data-test="headerComponent">
       <div className="wrap">
         <div className="logo">
-          <img className="logoIMG" src={Logo} alt="logo" />
+          <img data-test="logoIMG" src={Logo} alt="logo" />
         </div>
       </div>
     </header>
