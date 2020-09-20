@@ -28,12 +28,22 @@ describe("Headline Component", () => {
       const h1 = findByTestAttr(wrapper, "header");
       expect(h1.length).toBe(1);
     });
+
+    it("should render a desc", () => {
+      const decr = findByTestAttr(wrapper, "decr");
+      expect(decr.length).toBe(1);
+    });
   });
 
   describe("have no props", () => {
     let wrapper;
     beforeEach(() => {
       wrapper = setup();
+    });
+
+    it("should not render", () => {
+      const component = findByTestAttr(wrapper, "HeadlineComponent");
+      expect(component.length).toBe(0);
     });
   });
 });
