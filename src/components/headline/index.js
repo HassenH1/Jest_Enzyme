@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Proptypes from "prop-types";
 
 export default class Headline extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ export default class Headline extends Component {
   }
 
   render() {
-    const { header, description } = this.props;
+    const { header, description, tempRay } = this.props;
 
     if (!header) {
       return null;
@@ -20,3 +21,18 @@ export default class Headline extends Component {
     );
   }
 }
+
+//we must test proptypes with npm install --save-dev check-prop-types
+Headline.propTypes = {
+  header: Proptypes.string,
+  description: Proptypes.string,
+  tempRay: Proptypes.arrayOf(
+    Proptypes.shape({
+      fName: Proptypes.string,
+      lName: Proptypes.string,
+      email: Proptypes.string,
+      age: Proptypes.number,
+      onlineStatue: Proptypes.bool,
+    })
+  ),
+};
