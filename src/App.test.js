@@ -8,7 +8,6 @@ const setup = (initialState = {}) => {
   const wrapper = shallow(<App store={store} />)
     .childAt(0)
     .dive();
-  console.log(wrapper.debug());
   return wrapper;
 };
 
@@ -22,7 +21,6 @@ describe("app component", () => {
         { title: "title 3", body: "some text" },
       ],
     };
-    // const store = testStore(initialState);
     wrapper = setup(initialState);
   });
 
