@@ -63,7 +63,7 @@ class App extends Component {
             description="click the button to render posts"
             tempRay={temp}
           />
-          {hideBtn && <SharedButton {...configButton} />}
+          {!hideBtn && <SharedButton {...configButton} />}
           {posts.length > 0 && (
             <div>
               {posts.map((post, index) => {
