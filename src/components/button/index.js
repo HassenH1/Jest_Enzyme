@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class SharedButton extends Component {
+  constructor(props) {
+    super(props);
+    this.submitEvent = this.submitEvent.bind(this);
+  }
+
   submitEvent() {
     if (this.props.emitEvent) {
       this.props.emitEvent();
@@ -12,7 +17,7 @@ class SharedButton extends Component {
     const { buttonText } = this.props;
 
     return (
-      <button data-test="buttonComponent" onClick={() => this.submitEvent}>
+      <button data-test="buttonComponent" onClick={this.submitEvent}>
         {buttonText}
       </button>
     );
