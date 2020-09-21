@@ -17,19 +17,38 @@ const temp = [
   },
 ];
 
+const initialState = {
+  hideBtn: false,
+};
+
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props); //@deprecated
+    this.state = {
+      ...initialState,
+    };
     this.fetch = this.fetch.bind(this);
   }
 
   fetch() {
     this.props.fetchPosts();
+    this.exampleMethod_updateState();
+  }
+
+  exampleMethod_updateState() {
+    const { hideBtn } = this.state;
+    this.setState({
+      hideBtn: !hideBtn,
+    });
+  }
+
+  exampleMethod_returnsValue(number) {
+    return number + 1;
   }
 
   render() {
     const { posts } = this.props;
-
+    const { hideBtn } = this.state;
     const configButton = {
       buttonText: "get posts",
       emitEvent: this.fetch,
@@ -44,7 +63,7 @@ class App extends Component {
             description="click the button to render posts"
             tempRay={temp}
           />
-          <SharedButton {...configButton} />
+          {hideBtn && <SharedButton {...configButton} />}
           {posts.length > 0 && (
             <div>
               {posts.map((post, index) => {
@@ -70,5 +89,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { fetchPosts })(App);
-
-//video 6 - at 44:38
